@@ -17,21 +17,18 @@ class Customer extends Component {
 
   render() {
     return (
-      <li className="customer">
-        <h4>{this.props.children}</h4>
-        <p>
-          Name: {this.props.firstName} {this.props.lastName}
-        </p>
-        <p>Phone: {this.props.phone}</p>
-        <p>Email: {this.props.email}</p>
-        <p>Total Reservations: {this.props.reservations}</p>
-        <button
+      <tr>
+        <td>{this.props.firstName} {this.props.lastName}</td>
+        <td>{this.props.phone}</td>
+        <td>{this.props.email}</td>
+        <td>{this.props.reservations}</td>
+        {/* <button
           onClick={() => this.deleteCustomer(this.props.id)}
           className="btn-delete"
         >
           Delete
-        </button>
-      </li>
+        </button> */}
+      </tr>
     );
   }
 }

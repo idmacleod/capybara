@@ -232,7 +232,7 @@ class ReservationForm extends Component {
               <table>
                 <tbody>
                   <tr>
-                    <th>
+                    <th className="horizontal">
                       <label htmlFor="datetime">Date & Time</label>
                     </th>
                     <td>
@@ -247,7 +247,7 @@ class ReservationForm extends Component {
                   </tr>
 
                   <tr>
-                    <th>
+                    <th className="horizontal">
                       <label htmlFor="duration">Duration</label>
                     </th>
                     <td>
@@ -264,7 +264,7 @@ class ReservationForm extends Component {
                   </tr>
 
                   <tr>
-                    <th>
+                    <th className="horizontal">
                       <label htmlFor="party-size">Party Size</label>
                     </th>
                     <td>
@@ -280,7 +280,7 @@ class ReservationForm extends Component {
                   </tr>
 
                   <tr>
-                    <th>
+                    <th className="horizontal">
                       <label htmlFor="customer">Customer</label>
                     </th>
                     <td>
@@ -300,7 +300,7 @@ class ReservationForm extends Component {
                   </tr>
 
                   <tr>
-                    <th>
+                    <th className="horizontal">
                       <label htmlFor="venue-table">Table</label>
                     </th>
                     <td>
@@ -319,7 +319,7 @@ class ReservationForm extends Component {
                   </tr>
 
                   <tr>
-                    <th>
+                    <th className="horizontal">
                       <label htmlFor="Reservation Notes">
                         Reservation Notes
                       </label>
