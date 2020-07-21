@@ -27,9 +27,7 @@ class ReservationForm extends Component {
     this.handlePartySizeChange = this.handlePartySizeChange.bind(this);
     this.handleCustomerSelect = this.handleCustomerSelect.bind(this);
     this.handleVenueTableSelect = this.handleVenueTableSelect.bind(this);
-    this.handleReservationNotesChange = this.handleReservationNotesChange.bind(
-      this
-    );
+    this.handleReservationNotesChange = this.handleReservationNotesChange.bind(this);
     this.selectCustomerById = this.selectCustomerById.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateEnd = this.updateEnd.bind(this);
@@ -124,8 +122,8 @@ class ReservationForm extends Component {
         "Content-Type": "application/json",
       },
     })
-      .then((res) => res.json())
-      .then(() => this.props.onReservationSubmit());
+    .then(res => res.json())
+    .then(() => this.props.onReservationSubmit());
   }
 
   handleSubmit(event) {

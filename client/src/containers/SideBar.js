@@ -48,7 +48,7 @@ class SideBar extends React.Component {
     return (
       <div className="sidebar">
         <CalendarComponent onDaySelect={this.handleDaySelect} />
-        <ReservationList reservations={this.state.filteredReservations} />
+        <ReservationList reservations={this.state.filteredReservations} onReservationCancel={this.props.onReservationCancel} />
       </div>
     );
   }

@@ -43,7 +43,7 @@ class AppContainer extends Component {
     return (
       <div className="app-container">
         <div className="screen">
-          <SideBar reservations={this.state.reservations} />
+          <SideBar reservations={this.state.reservations} onReservationCancel={this.fetchData} />
           <MainContainer
             customers={this.state.customers}
             venueTables={this.state.venueTables}

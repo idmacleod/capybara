@@ -5,14 +5,16 @@ import moment from "moment";
 class Reservation extends Component {
   constructor(props) {
     super(props);
-    this.deleteReservation = this.deleteReservation.bind();
+    this.deleteReservation = this.deleteReservation.bind(this);
   }
 
   deleteReservation(id) {
     const reservationDeleteUrl = "http://localhost:8080/reservations/";
     return fetch(reservationDeleteUrl + id, {
-      method: "delete",
-    }).then((response) => response.json());
+      method: "DELETE",
+    })
+    .then(res => res.json())
+    .then(() => this.props.onReservationCancel());
   }
 
   render() {
