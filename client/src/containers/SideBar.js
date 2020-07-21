@@ -47,14 +47,8 @@ class SideBar extends React.Component {
   render() {
     return (
       <div className="sidebar">
-        <CalendarComponent
-          className="sidebar-calendar"
-          onDaySelect={this.handleDaySelect}
-        />
-        <ReservationList
-          className="sidebar-res-list"
-          reservations={this.state.filteredReservations}
-        />
+        <CalendarComponent onDaySelect={this.handleDaySelect} />
+        <ReservationList reservations={this.state.filteredReservations} />
       </div>
     );
   }

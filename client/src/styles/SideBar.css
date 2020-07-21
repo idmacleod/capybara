@@ -10,14 +10,3 @@
     border: none;
     background-color: var(--dark);
 }
-
-.res-list {
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
-}
-
-.list-scroll {
-    height: 65vh;
-    overflow-y: overlay;
-}

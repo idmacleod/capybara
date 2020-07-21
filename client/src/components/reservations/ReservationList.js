@@ -6,12 +6,12 @@ class ReservationList extends Component {
     const reservationNodes = this.props.reservations.map(
       (reservation, index) => {
         return (
-          <Reservation key={index} reservation={reservation}></Reservation>
+          <Reservation key={index} reservation={reservation} />
         );
       }
     );
 
-    return <ul className="list-scroll">{reservationNodes}</ul>;
+    return <ul>{reservationNodes}</ul>;
   }
 }
 

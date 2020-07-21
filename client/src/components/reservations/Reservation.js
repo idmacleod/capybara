@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../../styles/ReservationDetail.css";
+import "../../styles/Reservation.css";
 import moment from "moment";
 
 class Reservation extends Component {
@@ -20,32 +20,30 @@ class Reservation extends Component {
     const end = moment(this.props.reservation.end).format("HH:mm");
 
     return (
-      <div className="reservation-container">
-        <ul className="res-list">
-          <li>
-            {start} - {end}
+      <ul className="reservation">
+         <li>
+          {start} - {end}
+        </li>
+        <li>
+          {this.props.reservation.customer.firstName}{" "}
+          {this.props.reservation.customer.lastName}
+        </li>
+        <li>
+          {this.props.reservation.partySize} Guest(s) / Table{" "}
+          {this.props.reservation.venueTable.id}
+        </li>
+        {this.props.reservation.reservationNotes && (
+          <li className="italics">
+            Notes: {this.props.reservation.reservationNotes}
           </li>
-          <li>
-            {this.props.reservation.customer.firstName}{" "}
-            {this.props.reservation.customer.lastName}
-          </li>
-          <li>
-            {this.props.reservation.partySize} Guest(s) / Table{" "}
-            {this.props.reservation.venueTable.id}
-          </li>
-          {this.props.reservation.reservationNotes && (
-            <li className="italics">
-              Notes: {this.props.reservation.reservationNotes}
-            </li>
-          )}
-          <button
-            onClick={() => this.deleteReservation(this.props.reservation.id)}
-            className="btn-delete"
-          >
-            Delete
-          </button>
-        </ul>
-      </div>
+        )}
+        <button
+          onClick={() => this.deleteReservation(this.props.reservation.id)}
+          className="btn-delete"
+        >
+          Delete
+        </button>
+      </ul>
     );
   }
 }
