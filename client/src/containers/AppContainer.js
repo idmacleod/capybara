@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import MainFooter from "../components/sitewide/MainFooter";
 import MainContainer from "./MainContainer";
 import SideBar from "./SideBar";
 import "../styles/AppContainer.css";
@@ -52,7 +51,6 @@ class AppContainer extends Component {
             onReservationSubmit={this.fetchData}
           />
         </div>
-        <MainFooter />
       </div>
     );
   }
