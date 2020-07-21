@@ -14,7 +14,8 @@ class Reservation extends Component {
       method: "DELETE",
     })
     .then(res => res.json())
-    .then(() => this.props.onReservationCancel());
+    .then(() => this.props.onReservationCancel())
+    .then(() => this.props.refresh());
   }
 
   render() {

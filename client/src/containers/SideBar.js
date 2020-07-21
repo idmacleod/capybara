@@ -11,23 +11,10 @@ class SideBar extends React.Component {
       selectedDay: moment().format().slice(0, 10),
       filteredReservations: [],
     };
-
-    this.handleDaySelect = this.handleDaySelect.bind(this);
+    
     this.sortByStartTime = this.sortByStartTime.bind(this);
-  }
-
-  handleDaySelect(day) {
-    const selectedDay = moment(day).format().slice(0, 10);
-    const allReservations = [...this.props.reservations];
-    const filteredReservations = allReservations.filter((reservation) => {
-      const reservationDay = moment(reservation.start).format().slice(0, 10);
-      return reservationDay === selectedDay;
-    });
-    const sortedReservations = this.sortByStartTime(filteredReservations);
-    this.setState({
-      selectedDay: selectedDay,
-      filteredReservations: sortedReservations,
-    });
+    this.handleDaySelect = this.handleDaySelect.bind(this);
+    this.refresh = this.refresh.bind(this);
   }
 
   sortByStartTime(reservations) {
@@ -44,11 +31,30 @@ class SideBar extends React.Component {
     });
   }
 
+  handleDaySelect(day) {
+    const selectedDay = moment(day).format().slice(0, 10);
+    const allReservations = [...this.props.reservations];
+    const filteredReservations = allReservations.filter((reservation) => {
+      const reservationDay = moment(reservation.start).format().slice(0, 10);
+      return reservationDay === selectedDay;
+    });
+    const sortedReservations = this.sortByStartTime(filteredReservations);
+    this.setState({
+      selectedDay: selectedDay,
+      filteredReservations: sortedReservations,
+    });
+  }
+
+  refresh() {
+    console.log(`Refreshing ${this.state.selectedDay} ${this.props.reservations.length}`);
+    this.handleDaySelect(this.state.selectedDay);
+  }
+
   render() {
     return (
       <div className="sidebar">
         <CalendarComponent onDaySelect={this.handleDaySelect} />
-        <ReservationList reservations={this.state.filteredReservations} onReservationCancel={this.props.onReservationCancel} />
+        <ReservationList reservations={this.state.filteredReservations} onReservationCancel={this.props.onReservationCancel} refresh={this.refresh}/>
       </div>
     );
   }

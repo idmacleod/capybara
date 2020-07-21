@@ -6,7 +6,7 @@ class ReservationList extends Component {
     const reservationNodes = this.props.reservations.map(
       (reservation, index) => {
         return (
-          <Reservation key={index} reservation={reservation} onReservationCancel={this.props.onReservationCancel} />
+          <Reservation key={index} reservation={reservation} onReservationCancel={this.props.onReservationCancel} refresh={this.props.refresh}/>
         );
       }
     );
