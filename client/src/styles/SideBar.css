@@ -1,3 +1,23 @@
 .sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     font-size: smaller;
+    background-color: var(--dark);
+}
+
+.react-calendar {
+    border: none;
+    background-color: var(--dark);
+}
+
+.res-list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.list-scroll {
+    height: 65vh;
+    overflow-y: overlay;
 }
