@@ -22,7 +22,7 @@ class Customer extends Component {
       <tr>
         <td>{this.props.customer.firstName} {this.props.customer.lastName}</td>
         <td>{this.props.customer.phone}</td>
-        <td><a href={`mailto:${email}`} target="_blank">{email}</a></td>
+        <td><a href={`mailto:${email}`} target="_blank" rel="noopener noreferrer">{email}</a></td>
         <td>{this.props.customer.reservations.length}</td>
         <td className="button">
           <button className="delete">Delete</button>

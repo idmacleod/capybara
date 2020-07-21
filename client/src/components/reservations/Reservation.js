@@ -20,30 +20,19 @@ class Reservation extends Component {
     const end = moment(this.props.reservation.end).format("HH:mm");
 
     return (
-      <ul className="reservation">
-         <li>
-          {start} - {end}
-        </li>
-        <li>
-          {this.props.reservation.customer.firstName}{" "}
-          {this.props.reservation.customer.lastName}
-        </li>
-        <li>
-          {this.props.reservation.partySize} Guest(s) / Table{" "}
-          {this.props.reservation.venueTable.id}
-        </li>
-        {this.props.reservation.reservationNotes && (
-          <li className="italics">
-            Notes: {this.props.reservation.reservationNotes}
-          </li>
-        )}
-        {/* <button
-          onClick={() => this.deleteReservation(this.props.reservation.id)}
-          className="delete"
-        >
-          Delete
-        </button> */}
-      </ul>
+      <div className="reservation">
+        <ul className="reservation-details">
+          <li>{start} - {end}</li>
+          <li>{`${this.props.reservation.customer.firstName} ${this.props.reservation.customer.lastName}`}</li>
+          <li>{`${this.props.reservation.partySize} Guest(s) / Table ${this.props.reservation.venueTable.id}`}</li>
+          {this.props.reservation.reservationNotes && (<li className="italics"> Notes: {this.props.reservation.reservationNotes}</li>)}
+        </ul>
+        <div className="cancel">
+          <button onClick={() => this.deleteReservation(this.props.reservation.id)}>
+            Cancel
+          </button>
+        </div>
+      </div>
     );
   }
 }

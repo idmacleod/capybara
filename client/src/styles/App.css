@@ -3,7 +3,8 @@
   --light: #afc2d5;
   --contrast: #fbffb9;
   --shadow: #2d314266;
-  --danger: #f23427;
+  --warning-light: #ea9ba3;
+  --warning-dark: #701821;
 }
 
 * {

@@ -20,13 +20,15 @@ class CustomerList extends Component {
     return (
       <div className="customer-list">
         <table>
-          <tr>
-            <th>Name</th>
-            <th>Phone</th>
-            <th>Email</th>
-            <th>Reservations</th>
-          </tr>
-          {customerNodes}
+          <tbody>
+            <tr>
+              <th>Name</th>
+              <th>Phone</th>
+              <th>Email</th>
+              <th>Reservations</th>
+            </tr>
+            {customerNodes}
+          </tbody>
         </table>
       </div>
     );

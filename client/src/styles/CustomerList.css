@@ -15,7 +15,7 @@ td.button {
 }
 
 button.delete {
-  background-color: #ea9ba3;
-  border: 1px solid #701821;
-  color: #701821;
+  background-color: var(--warning-light);
+  border: 1px solid var(--warning-dark);
+  color: var(--warning-dark);
 }
