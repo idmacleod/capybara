@@ -37,12 +37,12 @@ class Reservation extends Component {
             Notes: {this.props.reservation.reservationNotes}
           </li>
         )}
-        <button
+        {/* <button
           onClick={() => this.deleteReservation(this.props.reservation.id)}
-          className="btn-delete"
+          className="delete"
         >
           Delete
-        </button>
+        </button> */}
       </ul>
     );
   }

@@ -2,6 +2,20 @@
   margin: 20px;
 }
 
+.customer-list table {
+  border: none;
+}
+
 .customer-list th {
   background-color: var(--contrast);
+}
+
+td.button {
+  border: none;
+}
+
+button.delete {
+  background-color: #ea9ba3;
+  border: 1px solid #701821;
+  color: #701821;
 }

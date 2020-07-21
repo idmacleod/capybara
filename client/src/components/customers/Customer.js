@@ -24,12 +24,9 @@ class Customer extends Component {
         <td>{this.props.customer.phone}</td>
         <td><a href={`mailto:${email}`} target="_blank">{email}</a></td>
         <td>{this.props.customer.reservations.length}</td>
-        {/* <button
-          onClick={() => this.deleteCustomer(this.props.id)}
-          className="btn-delete"
-        >
-          Delete
-        </button> */}
+        <td className="button">
+          <button className="delete">Delete</button>
+        </td>
       </tr>
     );
   }
