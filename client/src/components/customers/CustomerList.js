@@ -13,28 +13,22 @@ class CustomerList extends Component {
     const sortedCustomers = this.sortByReservationCount(this.props.customers);
     const customerNodes = sortedCustomers.map((customer, index) => {
       return (
-        <Customer
-          key={index}
-          id={customer.id}
-          firstName={customer.firstName}
-          lastName={customer.lastName}
-          phone={customer.phone}
-          email={customer.email}
-          reservations={customer.reservations.length}
-        />
+        <Customer key={index} customer={customer} />
       );
     });
 
     return (
-      <table>
-        <tr>
-          <th>Name</th>
-          <th>Phone</th>
-          <th>Email</th>
-          <th>Reservations</th>
-        </tr>
-        {customerNodes}
-      </table>
+      <div className="customer-list">
+        <table>
+          <tr>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Reservations</th>
+          </tr>
+          {customerNodes}
+        </table>
+      </div>
     );
   }
 }
