@@ -176,17 +176,14 @@ class ReservationForm extends Component {
     const endMoment = moment(this.state.end);
     const reservationStart = moment(reservation.start);
     const reservationEnd = moment(reservation.end);
-    if (
-      startMoment.isBetween(reservationStart, reservationEnd, undefined, "[)")
-    ) {
-      return false;
-    }
-    if (
-      endMoment.isBetween(reservationStart, reservationEnd, undefined, "(]")
-    ) {
-      return false;
-    }
-    return true;
+    if (startMoment.isBetween(reservationStart, reservationEnd, undefined, "[)") ||
+        endMoment.isBetween(reservationStart, reservationEnd, undefined, "(]") ||
+        reservationStart.isBetween(startMoment, endMoment, undefined, "[)") ||
+        reservationEnd.isBetween(startMoment, endMoment, undefined, "(]")) {
+          return false;
+        } else {
+          return true;
+        }
   }
 
   checkTableAvailable(venueTable) {
