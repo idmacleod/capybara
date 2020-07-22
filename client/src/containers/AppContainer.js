@@ -16,23 +16,22 @@ class AppContainer extends Component {
   }
 
   fetchData() {
-    const customersUrl = "http://localhost:8080/customers";
-    fetch(customersUrl)
+    const fetchCustomers = fetch("http://localhost:8080/customers")
       .then((res) => res.json())
       .then((data) => this.setState({ customers: data }))
       .catch((err) => console.error(err));
 
-    const venueTablesUrl = "http://localhost:8080/venue-tables";
-    fetch(venueTablesUrl)
+    const fetchVenueTables = fetch("http://localhost:8080/venue-tables")
       .then((res) => res.json())
       .then((data) => this.setState({ venueTables: data }))
       .catch((err) => console.error(err));
 
-    const reservationsUrl = "http://localhost:8080/reservations";
-    fetch(reservationsUrl)
+    const fetchReservations = fetch("http://localhost:8080/reservations")
       .then((res) => res.json())
       .then((data) => this.setState({ reservations: data }))
       .catch((err) => console.error(err));
+
+    return Promise.all([fetchCustomers, fetchVenueTables, fetchReservations]);
   }
 
   componentDidMount() {
