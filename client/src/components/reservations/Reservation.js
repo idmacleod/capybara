@@ -15,7 +15,7 @@ class Reservation extends Component {
     })
     .then(res => res.json())
     .then(() => this.props.onReservationCancel())
-    .then(() => this.props.refresh());
+    .then(() => this.props.filterReservations());
   }
 
   render() {

@@ -17,7 +17,7 @@ class AppContainer extends Component {
 
     this.fetchData = this.fetchData.bind(this);
     this.handleDaySelect = this.handleDaySelect.bind(this);
-    this.refresh = this.refresh.bind(this);
+    this.filterReservations = this.filterReservations.bind(this);
   }
 
   fetchData() {
@@ -43,7 +43,7 @@ class AppContainer extends Component {
     this.fetchData();
   }
 
-  sortByStartTime(reservations) {
+  sortReservations(reservations) {
     return reservations.sort((a, b) => {
       const momentA = moment(a.start);
       const momentB = moment(b.start);
@@ -57,22 +57,21 @@ class AppContainer extends Component {
     });
   }
 
-  handleDaySelect(day) {
-    const selectedDay = moment(day).format().slice(0, 10);
+  filterReservations() {
     const allReservations = [...this.state.reservations];
     const filteredReservations = allReservations.filter((reservation) => {
       const reservationDay = moment(reservation.start).format().slice(0, 10);
-      return reservationDay === selectedDay;
+      return reservationDay === this.state.selectedDay;
     });
-    const sortedReservations = this.sortByStartTime(filteredReservations);
+    const sortedReservations = this.sortReservations(filteredReservations);
     this.setState({
-      selectedDay: selectedDay,
       filteredReservations: sortedReservations,
     });
   }
 
-  refresh() {
-    this.handleDaySelect(this.state.selectedDay);
+  handleDaySelect(day) {
+    const selectedDay = moment(day).format().slice(0, 10);
+    this.setState({selectedDay: selectedDay}, () => this.filterReservations());
   }
 
   render() {
@@ -82,7 +81,7 @@ class AppContainer extends Component {
           <SideBar
             filteredReservations={this.state.filteredReservations}
             onDaySelect={this.handleDaySelect}
-            refresh={this.refresh}
+            filterReservations={this.filterReservations}
             onReservationCancel={this.fetchData}
           />
           <MainContainer

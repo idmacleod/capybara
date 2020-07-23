@@ -11,7 +11,7 @@ class SideBar extends React.Component {
         <ReservationList
           reservations={this.props.filteredReservations}
           onReservationCancel={this.props.onReservationCancel}
-          refresh={this.props.refresh}  
+          filterReservations={this.props.filterReservations}  
         />
       </div>
     );
