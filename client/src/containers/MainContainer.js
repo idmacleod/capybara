@@ -20,6 +20,7 @@ const MainContainer = (props) => {
               render={() => {
                 return (
                   <ReservationForm
+                    selectedDay={props.selectedDay}
                     customers={props.customers}
                     venueTables={props.venueTables}
                     refreshData={props.refreshData}

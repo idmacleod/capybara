@@ -86,6 +86,7 @@ class AppContainer extends Component {
             refreshData={this.fetchData}
           />
           <MainContainer
+            selectedDay={this.state.selectedDay}
             customers={this.state.customers}
             venueTables={this.state.venueTables}
             refreshData={this.fetchData}
