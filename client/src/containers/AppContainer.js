@@ -39,10 +39,6 @@ class AppContainer extends Component {
     return Promise.all([fetchCustomers, fetchVenueTables, fetchReservations]);
   }
 
-  componentDidMount() {
-    this.fetchData();
-  }
-
   sortReservations(reservations) {
     return reservations.sort((a, b) => {
       const momentA = moment(a.start);
@@ -67,6 +63,10 @@ class AppContainer extends Component {
     this.setState({
       filteredReservations: sortedReservations,
     });
+  }
+
+  componentDidMount() {
+    this.fetchData().then(() => this.filterReservations());
   }
 
   handleDaySelect(day) {
