@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Reservation from "./Reservation";
+import moment from "moment";
 
 class ReservationList extends Component {
   render() {
@@ -16,7 +17,14 @@ class ReservationList extends Component {
       }
     );
 
-    return <ul>{reservationNodes}</ul>;
+    const day = moment(this.props.selectedDay).format("dddd, MMMM Do");
+
+    return (
+      <div className="reservation-list">
+        <h3>{day}</h3>
+        <ul>{reservationNodes}</ul>
+      </div>
+    );
   }
 }
 
