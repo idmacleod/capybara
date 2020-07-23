@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Reservation from "./Reservation";
+import "../../styles/ReservationList.css";
 import moment from "moment";
 
 class ReservationList extends Component {

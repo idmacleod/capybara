@@ -1,0 +1,10 @@
+.reservation-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h3 {
+    margin-top: 15px;
+    color: white;
+}
