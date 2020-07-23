@@ -5,17 +5,16 @@ import moment from "moment";
 class Reservation extends Component {
   constructor(props) {
     super(props);
-    this.deleteReservation = this.deleteReservation.bind(this);
+    this.cancelReservation = this.cancelReservation.bind(this);
   }
 
-  deleteReservation(id) {
+  cancelReservation(id) {
     const reservationDeleteUrl = "http://localhost:8080/reservations/";
     return fetch(reservationDeleteUrl + id, {
       method: "DELETE",
     })
-    .then(res => res.json())
-    .then(() => this.props.onReservationCancel())
-    .then(() => this.props.filterReservations());
+      .then(() => this.props.refreshData())
+      .then(() => this.props.filterReservations());
   }
 
   render() {
@@ -31,7 +30,7 @@ class Reservation extends Component {
           {this.props.reservation.reservationNotes && (<li className="italics"> Notes: {this.props.reservation.reservationNotes}</li>)}
         </ul>
         <div className="cancel">
-          <button onClick={() => this.deleteReservation(this.props.reservation.id)}>
+          <button onClick={() => this.cancelReservation(this.props.reservation.id)}>
             Cancel
           </button>
         </div>

@@ -123,12 +123,11 @@ class ReservationForm extends Component {
       },
     })
     .then(res => res.json())
-    .then(() => this.props.onReservationSubmit());
+    .then(() => this.props.refreshData());
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    alert("Reservation created!");
     this.addReservation();
     this.setState(
       {
@@ -194,11 +193,11 @@ class ReservationForm extends Component {
   }
 
   handleOpenModal() {
-    this.setState({ showModal: true });
+    this.setState({showModal: true});
   }
 
   handleCloseModal() {
-    this.setState({ showModal: false });
+    this.setState({showModal: false});
   }
 
   render() {
@@ -349,7 +348,7 @@ class ReservationForm extends Component {
           className="modal"
         >
           <CustomerForm
-            onCustomerSubmit={this.props.onCustomerSubmit}
+            refreshData={this.props.refreshData}
             selectCustomerById={this.selectCustomerById}
             closeModal={this.handleCloseModal}
           />

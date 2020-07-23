@@ -9,9 +9,9 @@ class SideBar extends React.Component {
       <div className="sidebar">
         <CalendarComponent onDaySelect={this.props.onDaySelect} />
         <ReservationList
-          reservations={this.props.filteredReservations}
-          onReservationCancel={this.props.onReservationCancel}
+          filteredReservations={this.props.filteredReservations}
           filterReservations={this.props.filterReservations}  
+          refreshData={this.props.refreshData}
         />
       </div>
     );

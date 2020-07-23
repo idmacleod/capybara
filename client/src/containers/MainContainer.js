@@ -22,8 +22,7 @@ const MainContainer = (props) => {
                   <ReservationForm
                     customers={props.customers}
                     venueTables={props.venueTables}
-                    onCustomerSubmit={props.onCustomerSubmit}
-                    onReservationSubmit={props.onReservationSubmit}
+                    refreshData={props.refreshData}
                   />
                 );
               }}

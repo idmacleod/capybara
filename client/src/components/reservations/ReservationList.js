@@ -3,14 +3,14 @@ import Reservation from "./Reservation";
 
 class ReservationList extends Component {
   render() {
-    const reservationNodes = this.props.reservations.map(
+    const reservationNodes = this.props.filteredReservations.map(
       (reservation, index) => {
         return (
           <Reservation
             key={index}
             reservation={reservation}
-            onReservationCancel={this.props.onReservationCancel}
             filterReservations={this.props.filterReservations}
+            refreshData={this.props.refreshData}
           />
         );
       }

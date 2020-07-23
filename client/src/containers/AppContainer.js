@@ -79,16 +79,16 @@ class AppContainer extends Component {
       <div className="app-container">
         <div className="screen">
           <SideBar
+            selectedDay={this.state.selectedDay}
             filteredReservations={this.state.filteredReservations}
             onDaySelect={this.handleDaySelect}
             filterReservations={this.filterReservations}
-            onReservationCancel={this.fetchData}
+            refreshData={this.fetchData}
           />
           <MainContainer
             customers={this.state.customers}
             venueTables={this.state.venueTables}
-            onCustomerSubmit={this.fetchData}
-            onReservationSubmit={this.fetchData}
+            refreshData={this.fetchData}
           />
         </div>
       </div>
