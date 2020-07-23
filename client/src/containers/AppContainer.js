@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import MainContainer from "./MainContainer";
 import SideBar from "./SideBar";
+import moment from "moment";
 import "../styles/AppContainer.css";
 
 class AppContainer extends Component {
@@ -10,9 +11,13 @@ class AppContainer extends Component {
       customers: [],
       venueTables: [],
       reservations: [],
+      selectedDay: moment().format().slice(0, 10),
+      filteredReservations: []
     };
 
     this.fetchData = this.fetchData.bind(this);
+    this.handleDaySelect = this.handleDaySelect.bind(this);
+    this.refresh = this.refresh.bind(this);
   }
 
   fetchData() {
@@ -38,11 +43,48 @@ class AppContainer extends Component {
     this.fetchData();
   }
 
+  sortByStartTime(reservations) {
+    return reservations.sort((a, b) => {
+      const momentA = moment(a.start);
+      const momentB = moment(b.start);
+      if (moment(momentA).isBefore(momentB)) {
+        return -1;
+      }
+      if (moment(momentB).isBefore(momentA)) {
+        return 1;
+      }
+      return 0;
+    });
+  }
+
+  handleDaySelect(day) {
+    const selectedDay = moment(day).format().slice(0, 10);
+    const allReservations = [...this.state.reservations];
+    const filteredReservations = allReservations.filter((reservation) => {
+      const reservationDay = moment(reservation.start).format().slice(0, 10);
+      return reservationDay === selectedDay;
+    });
+    const sortedReservations = this.sortByStartTime(filteredReservations);
+    this.setState({
+      selectedDay: selectedDay,
+      filteredReservations: sortedReservations,
+    });
+  }
+
+  refresh() {
+    this.handleDaySelect(this.state.selectedDay);
+  }
+
   render() {
     return (
       <div className="app-container">
         <div className="screen">
-          <SideBar reservations={this.state.reservations} onReservationCancel={this.fetchData} />
+          <SideBar
+            filteredReservations={this.state.filteredReservations}
+            onDaySelect={this.handleDaySelect}
+            refresh={this.refresh}
+            onReservationCancel={this.fetchData}
+          />
           <MainContainer
             customers={this.state.customers}
             venueTables={this.state.venueTables}
