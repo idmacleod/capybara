@@ -40,54 +40,31 @@ class ReservationForm extends Component {
   }
 
   handleStartChange(event) {
-    this.setState(
-      {
-        start: event.target.value,
-      },
-      () => this.updateEnd()
-    );
+    this.setState({start: event.target.value}, () => this.updateEnd());
   }
 
   handleDurationChange(event) {
-    this.setState(
-      {
-        duration: event.target.value,
-      },
-      () => this.updateEnd()
-    );
+    this.setState({duration: event.target.value}, () => this.updateEnd());
   }
 
   handlePartySizeChange(event) {
-    this.setState(
-      {
-        partySize: event.target.value,
-      },
-      () => this.updateAvailableTables()
-    );
+    this.setState({partySize: event.target.value}, () => this.updateAvailableTables());
   }
 
   handleCustomerSelect(event) {
-    this.setState({
-      customer: event.target.value,
-    });
+    this.setState({customer: event.target.value});
   }
 
   handleVenueTableSelect(event) {
-    this.setState({
-      venueTable: event.target.value,
-    });
+    this.setState({venueTable: event.target.value});
   }
 
   handleReservationNotesChange(event) {
-    this.setState({
-      reservationNotes: event.target.value,
-    });
+    this.setState({reservationNotes: event.target.value});
   }
 
   selectCustomerById(id) {
-    this.setState({
-      customer: `${id}`,
-    });
+    this.setState({customer: `${id}`});
   }
 
   addReservation() {
