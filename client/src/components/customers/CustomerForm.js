@@ -17,24 +17,7 @@ class CustomerForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  addCustomer(customer) {
-    const url = "http://localhost:8080/customers";
-    return fetch(url, {
-      method: "POST",
-      body: JSON.stringify(customer),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((newCustomer) => {
-        this.props.refreshData();
-        this.props.selectCustomerById(newCustomer.id);
-      });
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
+  addCustomer() {
     const newCustomer = {
       firstName: this.state.firstName,
       lastName: this.state.lastName,
@@ -42,14 +25,30 @@ class CustomerForm extends Component {
       email: this.state.email,
       reservations: [],
     };
-    this.addCustomer(newCustomer);
+
+    return fetch("http://localhost:8080/customers", {
+      method: "POST",
+      body: JSON.stringify(newCustomer),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then(res => res.json())
+      .then(newCustomer => {
+        this.props.refreshData()
+          .then(() => this.props.selectCustomerById(newCustomer.id));
+      });
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    this.addCustomer();
     this.setState({
       firstName: "",
       lastName: "",
       phone: "",
       email: "",
-    });
-    this.props.closeModal();
+    }, () => this.props.closeModal());
   }
 
   handleFirstNameChange(event) {

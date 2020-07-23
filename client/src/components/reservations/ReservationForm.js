@@ -90,40 +90,23 @@ class ReservationForm extends Component {
     });
   }
 
-  getCustomerById(id) {
-    return this.props.customers.find((customer) => customer.id === id);
-  }
-
-  getVenueTableById(id) {
-    return this.props.venueTables.find((venueTable) => venueTable.id === id);
-  }
-
   addReservation() {
-    const url = "http://localhost:8080/reservations";
-    const selectedCustomer = this.getCustomerById(
-      parseInt(this.state.customer)
-    );
-    const selectedVenueTable = this.getVenueTableById(
-      parseInt(this.state.venueTable)
-    );
     const newReservation = {
-      customer: selectedCustomer,
-      venueTable: selectedVenueTable,
+      customer: {id: this.state.customer},
+      venueTable: {id: this.state.venueTable},
       start: this.state.start,
       end: this.state.end,
       partySize: this.state.partySize,
       reservationNotes: this.state.reservationNotes,
     };
 
-    return fetch(url, {
+    return fetch("http://localhost:8080/reservations", {
       method: "POST",
       body: JSON.stringify(newReservation),
       headers: {
         "Content-Type": "application/json",
       },
-    })
-    .then(res => res.json())
-    .then(() => this.props.refreshData());
+    }).then(() => this.props.refreshData());
   }
 
   handleSubmit(event) {
