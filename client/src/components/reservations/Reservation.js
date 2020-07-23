@@ -12,9 +12,7 @@ class Reservation extends Component {
     const reservationDeleteUrl = "http://localhost:8080/reservations/";
     return fetch(reservationDeleteUrl + id, {
       method: "DELETE",
-    })
-      .then(() => this.props.refreshData())
-      .then(() => this.props.filterReservations());
+    }).then(() => this.props.refreshData());
   }
 
   render() {

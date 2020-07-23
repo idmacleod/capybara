@@ -36,7 +36,8 @@ class AppContainer extends Component {
       .then((data) => this.setState({ reservations: data }))
       .catch((err) => console.error(err));
 
-    return Promise.all([fetchCustomers, fetchVenueTables, fetchReservations]);
+    return Promise.all([fetchCustomers, fetchVenueTables, fetchReservations])
+      .then(() => this.filterReservations());
   }
 
   sortReservations(reservations) {
@@ -66,7 +67,7 @@ class AppContainer extends Component {
   }
 
   componentDidMount() {
-    this.fetchData().then(() => this.filterReservations());
+    this.fetchData();
   }
 
   handleDaySelect(day) {
@@ -82,7 +83,6 @@ class AppContainer extends Component {
             selectedDay={this.state.selectedDay}
             filteredReservations={this.state.filteredReservations}
             onDaySelect={this.handleDaySelect}
-            filterReservations={this.filterReservations}
             refreshData={this.fetchData}
           />
           <MainContainer
