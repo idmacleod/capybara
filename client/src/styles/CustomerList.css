@@ -2,20 +2,16 @@
   margin: 20px;
 }
 
-.customer-list table {
-  border: none;
+#filter {
+  width: 650px;
+  margin-bottom: 10px;
+  outline: none;
 }
 
-.customer-list th {
+.customer-table {
+  width: 650px;
+}
+
+.customer-table th {
   background-color: var(--contrast);
-}
-
-td.button {
-  border: none;
-}
-
-button.delete {
-  background-color: var(--warning-light);
-  border: 1px solid var(--warning-dark);
-  color: var(--warning-dark);
 }

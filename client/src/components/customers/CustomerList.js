@@ -51,8 +51,13 @@ class CustomerList extends Component {
 
     return (
       <div className="customer-list">
-        <input type="text" onChange={this.handleFilterChange} />
-        <table>
+        <input
+          type="text"
+          id="filter"
+          placeholder="Filter by name or phone number..."
+          onChange={this.handleFilterChange}
+        />
+        <table className="customer-table">
           <tbody>
             <tr>
               <th>Name</th>
