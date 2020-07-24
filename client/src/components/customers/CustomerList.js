@@ -3,14 +3,46 @@ import Customer from "./Customer";
 import "../../styles/CustomerList.css";
 
 class CustomerList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      filter: "",
+      filteredCustomers: []
+    }
+
+    this.handleFilterChange = this.handleFilterChange.bind(this);
+    this.filterCustomers = this.filterCustomers.bind(this);
+  }
+
   sortByReservationCount(customers) {
     return customers.sort(
       (a, b) => b.reservations.length - a.reservations.length
     );
   }
 
+  filterCustomers() {
+    const allCustomers = [...this.props.customers];
+    if (this.state.filter) {
+      const filteredCustomers = allCustomers.filter(customer => {
+        return (
+          customer.firstName.toLowerCase().includes(this.state.filter) ||
+          customer.lastName.toLowerCase().includes(this.state.filter) ||
+          customer.phone.includes(this.state.filter)
+        );
+      });
+      this.setState({filteredCustomers: filteredCustomers});
+    } else {
+      this.setState({filteredCustomers: allCustomers});
+    }
+  }
+
+  handleFilterChange(event) {
+    this.setState({filter: event.target.value.toLowerCase()}, () => this.filterCustomers());
+  }
+
   render() {
-    const sortedCustomers = this.sortByReservationCount(this.props.customers);
+    const customers = this.state.filter ? this.state.filteredCustomers : this.props.customers;
+    const sortedCustomers = this.sortByReservationCount(customers);
     const customerNodes = sortedCustomers.map((customer, index) => {
       return (
         <Customer key={index} customer={customer} />
@@ -19,6 +51,7 @@ class CustomerList extends Component {
 
     return (
       <div className="customer-list">
+        <input type="text" onChange={this.handleFilterChange} />
         <table>
           <tbody>
             <tr>
